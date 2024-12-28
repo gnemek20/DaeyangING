@@ -1,0 +1,74 @@
+.summary {
+  margin: auto;
+  margin-top: 200px;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inspiringText {
+  display: flex;
+  text-align: center;
+}
+.inspiringText hr {
+  border: 1px solid dimgray;
+}
+.inspiringText h1 {
+  padding: 2.5px 15px;
+  font-size: 20px;
+}
+
+.inspiringSights {
+  margin-top: 100px;
+  width: 100%;
+  max-width: calc(100% - 50px);
+  display: flex;
+  flex-direction: column;
+}
+.inspiringSights hr {
+  border: 0;
+  border-bottom: 1px solid dimgray;
+}
+
+.comeDownImages {
+  height: 500px;
+  background-color: aqua;
+}
+
+.actionButtons {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+.actionButtons button {
+  opacity: 0.3;
+  cursor: pointer;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid black;
+  transition: all 100ms;
+}
+.actionButtons button:nth-child(1) {
+  background-color: black;
+  color: white;
+}
+.actionButtons button:nth-child(2) {
+  background-color: transparent;
+}
+
+@media (hover:hover) {
+  .actionButtons button:hover {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .summary {
+    padding: 0px 10px;
+  }
+
+  .actionButtons button {
+    opacity: 1;
+  }
+}

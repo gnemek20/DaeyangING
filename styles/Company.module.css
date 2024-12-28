@@ -1,0 +1,110 @@
+.introduce {
+  display: flex;
+  height: calc(100dvh - 20px);
+  padding: 10px;
+  gap: 20px;
+}
+.introduce > div:nth-child(1) {
+  flex: 1.35;
+  padding: 5dvh 0px 5dvh 5dvh;
+}
+.introduce > div:nth-child(2) {
+  flex: 1;
+  padding: 10dvh 5dvh 5dvh 0px;
+}
+
+.coverImage {
+  height: 100%;
+  border: 1px solid dimgray;
+}
+
+.introduceText {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.introduceText h1 {
+  font-size: 24px;
+}
+
+.merit {
+  margin-top: 200px;
+}
+
+.inspiringText {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 0px 10px;
+}
+.inspiringText hr {
+  border: 1px solid dimgray;
+}
+.inspiringText h1 {
+  padding: 2.5px 15px;
+  font-size: 20px;
+}
+
+.advantages {
+  margin: auto;
+  margin-top: 100px;
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  padding: 0px 10px;
+  gap: 20px;
+}
+.advantages > div {
+  flex: 1;
+  aspect-ratio: 1/1;
+  position: relative;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.advantageTitle {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 75%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.advantageTitle h1 {
+  font-size: 18px;
+}
+.advantageTitle hr {
+  width: 20px;
+  border: 0px;
+  border-bottom: 1px solid dimgray;
+}
+
+@media screen and (max-width: 768px) {
+  .introduce {
+    height: auto;
+    flex-direction: column;
+  }
+  .introduce > div:nth-child(1) {
+    flex: auto;
+    padding: 5dvh 0px 0px 5dvh;
+    height: 35dvh;
+  }
+  .introduce > div:nth-child(2) {
+    flex: auto;
+    padding: 0px 5dvh 5dvh 0px;
+  }
+
+  .merit {
+    margin-top: 150px;
+  }
+
+  .advantages {
+    margin-top: 50px;
+    flex-direction: column;
+  }
+  .advantages > div {
+    aspect-ratio: 2/1;
+  }
+}
