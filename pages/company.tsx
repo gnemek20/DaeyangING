@@ -1,8 +1,10 @@
+import { Header } from "@/components";
 import styles from "@/styles/Company.module.css";
 
 const Company = () => {
   return (
     <>
+      <Header />
       <div className={`${styles.introduce}`}>
         <div>
           <div className={`${styles.coverImage}`}>

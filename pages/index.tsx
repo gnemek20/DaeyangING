@@ -1,8 +1,10 @@
+import { Header } from "@/components";
 import styles from "@/styles/Landing.module.css";
 
 const Landing = () => {
   return (
     <>
+      <Header />
       <div>
         {/* 랜딩 애니메이션 */}
       </div>

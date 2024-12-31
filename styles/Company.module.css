@@ -16,6 +16,7 @@
 .coverImage {
   height: 100%;
   border: 1px solid dimgray;
+  background-color: aqua;
 }
 
 .introduceText {
