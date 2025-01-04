@@ -1,0 +1,38 @@
+.products {
+  margin: auto;
+  width: 100%;
+  max-width: 1200px;
+  height: 100dvh;
+  display: flex;
+  gap: 20px;
+}
+.products > div {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+}
+.products > div:nth-child(1) {
+  padding-right: 0px;
+}
+.products > div:nth-child(2) {
+  padding-left: 0px;
+}
+
+.list {
+  aspect-ratio: 1/1;
+  width: 100%;
+}
+.list td {
+  border: 1px solid dimgray;
+}
+
+@media screen and (max-width: 768px) {
+  .products {
+    flex-direction: column;
+  }
+  .products > div {
+    padding: 10px;
+  }
+}

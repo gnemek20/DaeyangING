@@ -16,13 +16,16 @@ const Header = () => {
             
             throttleTimerRef.current = setTimeout(() => {
               throttleTimerRef.current = null;
+
               const after = window.scrollY;
+              const offset = before - after;
+
               const target = headerRef.current;
               
-              if (before > after) {
+              if (offset > 0) {
                 target?.setAttribute('class', `${styles.header}`)
               }
-              else if (before < after) {
+              else if (offset < 0) {
                 target?.setAttribute('class', `${styles.header} ${styles.headerHide}`)
               }
             }, 100);

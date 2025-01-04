@@ -11,3 +11,14 @@
 .headerHide {
   transform: translateY(-100%);
 }
+
+@media screen and (max-width: 768px) {
+  .header {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+  }
+  .headerHide {
+    transform: translateY(100%);
+  }
+}
