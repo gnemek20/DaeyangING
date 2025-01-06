@@ -1,4 +1,4 @@
-import { Header } from "@/components";
+import { Footer, Header } from "@/components";
 import styles from "@/styles/Company.module.css";
 
 const Company = () => {
@@ -49,6 +49,7 @@ const Company = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

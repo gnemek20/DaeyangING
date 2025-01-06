@@ -1,16 +1,15 @@
 .introduce {
   display: flex;
-  height: calc(100dvh - 20px);
-  padding: 10px;
+  height: calc(100svh - 40px);
   gap: 20px;
 }
 .introduce > div:nth-child(1) {
   flex: 1.35;
-  padding: 5dvh 0px 5dvh 5dvh;
+  padding: 5svh 0px 5svh 5svh;
 }
 .introduce > div:nth-child(2) {
   flex: 1;
-  padding: 10dvh 5dvh 5dvh 0px;
+  padding: 10svh 5svh 5svh 0px;
 }
 
 .coverImage {
@@ -86,15 +85,16 @@
   .introduce {
     height: auto;
     flex-direction: column;
+    padding: 10px;
   }
   .introduce > div:nth-child(1) {
     flex: auto;
-    padding: 5dvh 0px 0px 5dvh;
-    height: 35dvh;
+    padding: 5svh 0px 0px 5svh;
+    height: 35svh;
   }
   .introduce > div:nth-child(2) {
     flex: auto;
-    padding: 0px 5dvh 5dvh 0px;
+    padding: 0px 5svh 5svh 0px;
   }
 
   .merit {

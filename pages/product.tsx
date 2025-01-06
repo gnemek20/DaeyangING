@@ -1,20 +1,25 @@
-import { Header } from "@/components";
+import { Footer, Header } from "@/components";
 import styles from "@/styles/Product.module.css";
 
-const List = () => {
+const List = ({ title }: { title: string }) => {
   return (
-    <table className={`${styles.list}`}>
-      <tbody>
-        <tr>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
+    <>
+    <div className={`${styles.title}`}>
+      <p>{ title }</p>
+    </div>
+      <table className={`${styles.list}`}>
+        <tbody>
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </>
   );
 }
 
@@ -24,12 +29,13 @@ const Product = () => {
       <Header />
       <div className={`${styles.products}`}>
         <div>
-          <List />
+          <List title="지퍼" />
         </div>
         <div>
-          <List />
+          <List title="풀러" />
         </div>
       </div>
+      <Footer />
     </>
   );
 }

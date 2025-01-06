@@ -1,4 +1,4 @@
-import { Header } from "@/components";
+import { Footer, Header } from "@/components";
 import styles from "@/styles/Landing.module.css";
 
 const Landing = () => {
@@ -28,6 +28,7 @@ const Landing = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
