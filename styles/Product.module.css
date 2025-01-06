@@ -27,6 +27,8 @@
   justify-content: center;
   padding: 25px 100px;
   background-color: rgba(0, 0, 0, 0.75);
+  user-select: none;
+  pointer-events: none;
 }
 .title > p {
   color: white;
@@ -38,6 +40,7 @@
   border-collapse: collapse;
 }
 .list td {
+  cursor: pointer;
   border: 1px solid dimgray;
   background-color: aqua;
 }

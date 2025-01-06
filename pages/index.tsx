@@ -1,7 +1,10 @@
 import { Footer, Header } from "@/components";
 import styles from "@/styles/Landing.module.css";
+import { useRouter } from "next/router";
 
 const Landing = () => {
+  const router = useRouter();
+
   return (
     <>
       <Header />
@@ -23,8 +26,8 @@ const Landing = () => {
           </div>
           <hr />
           <div className={`${styles.actionButtons}`}>
-            <button>More View</button>
-            <button>Contact</button>
+            <button onClick={() => router.push('/product')}>More View</button>
+            <button onClick={() => router.push('/')}>Contact</button>
           </div>
         </div>
       </div>

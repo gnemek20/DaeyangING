@@ -60,10 +60,13 @@ const Header = () => {
   const useToggleHandler = () => {
     const toggleRef = useRef<() => void>(null);
     const timerRef = useRef<NodeJS.Timeout>(undefined);
-
+    
     if (!toggleRef.current) {
       toggleRef.current = (() => {
         return () => {
+          const targetTag = ((event as PointerEvent).target as HTMLElement).tagName;
+          if (['TD'].includes(targetTag)) return;
+
           if (!timerRef.current) {
             const before = window.scrollY;
 
