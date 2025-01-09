@@ -24,11 +24,11 @@ const Request = () => {
                 <td>
                   <label className={`${styles.checkbox}`} htmlFor="zipper">
                     <input type="checkbox" id="zipper" />
-                    <p>지퍼</p>
+                    <p className={`${styles.label}`}>지퍼</p>
                   </label>
                   <label className={`${styles.checkbox}`} htmlFor="puller">
                     <input type="checkbox" id="puller" />
-                    <p>풀러</p>
+                    <p className={`${styles.label}`}>풀러</p>
                   </label>
                 </td>
               </tr>

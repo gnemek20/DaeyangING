@@ -29,7 +29,7 @@
 .item th {
   display: flex;
   width: 150px;
-  color: #636363;
+  color: #424242;
   padding: 20px 10px;
   padding-bottom: 0px;
 }
@@ -60,7 +60,8 @@
   display: flex;
   gap: 5px;
 }
-.checkbox p {
+.label {
+  font-size: 14px;
   color: #424242;
   user-select: none;
 }

@@ -25,7 +25,7 @@ const Landing = () => {
           <hr />
           <div className={`${styles.actionButtons}`}>
             <button onClick={() => router.push('/product')}>More View</button>
-            <button onClick={() => router.push('/')}>Contact</button>
+            <button onClick={() => router.push('/request')}>Contact</button>
           </div>
         </div>
       </div>

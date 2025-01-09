@@ -72,9 +72,13 @@ const Header = () => {
         return () => {
           const targetClass = ((event as PointerEvent).target as HTMLElement).classList.value;
           const targetTag = ((event as PointerEvent).target as HTMLElement).tagName;
-
+          
           if (targetClass.includes('Header')) return;
-          else if (['TD', 'INPUT', 'TEXTAREA'].join().includes(targetTag)) return;
+          else if (targetClass.includes('label')) return;
+          else if (targetTag.includes('TD')) return;
+          else if (targetTag.includes('INPUT')) return;
+          else if (targetTag.includes('TEXTAREA')) return;
+          else if (targetTag.includes('LABEL')) return;
 
           if (!timerRef.current) {
             timerRef.current = setTimeout(() => {
