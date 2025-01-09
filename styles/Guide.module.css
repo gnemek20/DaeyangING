@@ -16,7 +16,7 @@
 }
 .naver {
   width: 100%;
-  border: 1px solid dimgray;
+  border: 2px solid rgba(0, 0, 0, 0.35);
 }
 .cover {
   z-index: 10;
@@ -32,7 +32,6 @@
   width: 100%;
   max-width: calc(100% - 50px);
   height: 100%;
-  border: 1px solid dimgray;
 }
 .inform > div {
   flex: 1;
@@ -41,15 +40,21 @@
   flex-direction: column;
   gap: 5px;
 }
+.inform > div:nth-child(1) {
+  border-left: 2px solid #636363;
+}
+.inform > div:nth-child(3) {
+  border-right: 2px solid #636363;
+}
 .inform > hr {
   border: none;
-  border-top: 1px solid dimgray;
-  border-left: 1px solid dimgray;
+  border-top: 1px solid rgba(0, 0, 0, 0.25);
+  border-left: 1px solid rgba(0, 0, 0, 0.25);
 }
 
 @media screen and (max-width: 768px) {
   .guide {
-    margin-top: 100px;
+    margin-top: 10svh;
     padding: 0px 10px;
   }
   .map {
@@ -61,5 +66,13 @@
     margin-top: 25px;
     max-width: calc(100% - 15px);
     flex-direction: column;
+  }
+  .inform > div:nth-child(1) {
+    border-top: 2px solid #636363;
+    border-left: none;
+  }
+  .inform > div:nth-child(3) {
+    border-bottom: 2px solid #636363;
+    border-right: none;
   }
 }

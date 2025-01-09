@@ -69,6 +69,10 @@
     padding: 0px 10px;
   }
 
+  .inspiringSights {
+    max-width: calc(100% - 15px);
+  }
+
   .comeDownImages {
     height: 350px;
   }

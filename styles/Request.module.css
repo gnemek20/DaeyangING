@@ -1,0 +1,90 @@
+.survey {
+  margin: auto;
+  margin-top: 150px;
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+}
+.survey > div {
+  width: calc(100% - 50px);
+  border-top: 2px solid #636363;
+  border-bottom: 2px solid #636363;
+}
+.survey table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.item {
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-left: none;
+  border-right: none;
+}
+.item:nth-child(1) {
+  border-top: none;
+}
+.item:nth-last-child(1) {
+  border-bottom: none;
+}
+.item th {
+  display: flex;
+  width: 150px;
+  color: #636363;
+  padding: 20px 10px;
+  padding-bottom: 0px;
+}
+.item td {
+  padding: 20px 10px;
+  padding-top: 5px;
+  display: flex;
+  gap: 25px;
+}
+.item input {
+  padding: 5px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  font-size: 16px;
+  color: #424242;
+  outline: none;
+}
+.item textarea {
+  resize: vertical;
+  width: 100%;
+  padding: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  font-size: 16px;
+  color: #424242;
+  outline: none;
+}
+
+.checkbox {
+  display: flex;
+  gap: 5px;
+}
+.checkbox p {
+  color: #424242;
+  user-select: none;
+}
+
+.file {
+  display: flex;
+}
+.file > input {
+  display: none;
+}
+.file > label {
+  cursor: pointer;
+  width: 100px;
+  padding: 5px 10px;
+  border: 2px dashed #949494;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .survey {
+    margin-top: 10svh;
+    padding: 0px 10px;
+  }
+  .survey > div {
+    width: 100%;
+  }
+}

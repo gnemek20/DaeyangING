@@ -1,5 +1,6 @@
 import styles from "@/styles/Header.module.css";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 
@@ -26,6 +27,8 @@ const Header = () => {
 
   type pathNames = '/' | '/company' | '/product' | '/request' | '/guide';
   const [path, setPath] = useState<pathNames>();
+
+  const pathName = usePathname();
 
   const useScrollHandler = () => {
     const scrollRef = useRef<() => void>(null);
@@ -69,9 +72,9 @@ const Header = () => {
         return () => {
           const targetClass = ((event as PointerEvent).target as HTMLElement).classList.value;
           const targetTag = ((event as PointerEvent).target as HTMLElement).tagName;
-          
+
           if (targetClass.includes('Header')) return;
-          else if (['TD'].includes(targetTag)) return;
+          else if (['TD', 'INPUT', 'TEXTAREA'].join().includes(targetTag)) return;
 
           if (!timerRef.current) {
             timerRef.current = setTimeout(() => {
@@ -95,11 +98,13 @@ const Header = () => {
     setPath(location);
     router.push(location);
   }
+
+  useEffect(() => {
+    const path = pathName as pathNames;
+    setPath(path);
+  }, [pathName]);
   
   useEffect(() => {
-    const path = window.location.pathname as pathNames;
-    setPath(path);
-
     scrollHandler();
     document.addEventListener('scroll', scrollHandler);
     document.addEventListener('click', toggleHandler);
@@ -125,7 +130,7 @@ const Header = () => {
           <p className={`${styles.onlyPc}`}>제품 소개</p>
           <Image className={`${styles.onlyMobile}`} src={zipperIcon.src} alt="" />
         </div>
-        <div className={`${path === '/request' && styles.selected}`} onClick={() => routerPush('/')}>
+        <div className={`${path === '/request' && styles.selected}`} onClick={() => routerPush('/request')}>
           <p className={`${styles.onlyPc}`}>발주 문의</p>
           <Image className={`${styles.onlyMobile}`} src={adviceIcon.src} alt="" />
         </div>
