@@ -69,6 +69,10 @@
     padding: 0px 10px;
   }
 
+  .comeDownImages {
+    height: 350px;
+  }
+
   .actionButtons button {
     opacity: 1;
   }

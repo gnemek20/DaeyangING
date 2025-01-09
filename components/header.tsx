@@ -1,7 +1,7 @@
 import styles from "@/styles/Header.module.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const homeIcon = {
   src: require('@/public/icons/home.svg')
@@ -23,6 +23,9 @@ const Header = () => {
   const router = useRouter();
 
   const headerRef = useRef<HTMLDivElement>(null);
+
+  type pathNames = '/' | '/company' | '/product' | '/request' | '/guide';
+  const [path, setPath] = useState<pathNames>();
 
   const useScrollHandler = () => {
     const scrollRef = useRef<() => void>(null);
@@ -64,23 +67,18 @@ const Header = () => {
     if (!toggleRef.current) {
       toggleRef.current = (() => {
         return () => {
+          const targetClass = ((event as PointerEvent).target as HTMLElement).classList.value;
           const targetTag = ((event as PointerEvent).target as HTMLElement).tagName;
-          if (['TD'].includes(targetTag)) return;
+          
+          if (targetClass.includes('Header')) return;
+          else if (['TD'].includes(targetTag)) return;
 
           if (!timerRef.current) {
-            const before = window.scrollY;
-
             timerRef.current = setTimeout(() => {
               timerRef.current = undefined;
 
-              const after = window.scrollY;
-              const offset = before - after;
-
               const target = headerRef.current;
-
-              if (offset === 0) {
-                target?.classList.toggle(styles.headerHide);
-              }
+              target?.classList.toggle(styles.headerHide);
             }, 100);
           }
         }
@@ -92,8 +90,17 @@ const Header = () => {
   
   const scrollHandler = useScrollHandler();
   const toggleHandler = useToggleHandler();
+
+  const routerPush = (location: pathNames) => {
+    setPath(location);
+    router.push(location);
+  }
   
   useEffect(() => {
+    const path = window.location.pathname as pathNames;
+    setPath(path);
+
+    scrollHandler();
     document.addEventListener('scroll', scrollHandler);
     document.addEventListener('click', toggleHandler);
     
@@ -106,23 +113,23 @@ const Header = () => {
   return (
     <div ref={headerRef} className={`${styles.header}`}>
       <div className={`${styles.category}`}>
-        <div onClick={() => router.push('/')}>
+        <div className={`${path === '/' && styles.selected}`} onClick={() => routerPush('/')}>
           <p className={`${styles.onlyPc}`}>메인 페이지</p>
           <Image className={`${styles.onlyMobile}`} src={homeIcon.src} alt="" />
         </div>
-        <div onClick={() => router.push('/company')}>
+        <div className={`${path === '/company' && styles.selected}`} onClick={() => routerPush('/company')}>
           <p className={`${styles.onlyPc}`}>회사 소개</p>
           <Image className={`${styles.onlyMobile}`} src={companyIcon.src} alt="" />
         </div>
-        <div onClick={() => router.push('/product')}>
+        <div className={`${path === '/product' && styles.selected}`} onClick={() => routerPush('/product')}>
           <p className={`${styles.onlyPc}`}>제품 소개</p>
           <Image className={`${styles.onlyMobile}`} src={zipperIcon.src} alt="" />
         </div>
-        <div onClick={() => router.push('/')}>
+        <div className={`${path === '/request' && styles.selected}`} onClick={() => routerPush('/')}>
           <p className={`${styles.onlyPc}`}>발주 문의</p>
           <Image className={`${styles.onlyMobile}`} src={adviceIcon.src} alt="" />
         </div>
-        <div onClick={() => router.push('/')}>
+        <div className={`${path === '/guide' && styles.selected}`} onClick={() => routerPush('/guide')}>
           <p className={`${styles.onlyPc}`}>오시는 길</p>
           <Image className={`${styles.onlyMobile}`} src={locationIcon.src} alt="" />
         </div>

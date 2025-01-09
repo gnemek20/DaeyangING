@@ -3,7 +3,7 @@
   max-width: 1200px;
   height: calc(100svh - 40px);
   display: flex;
-  gap: 20px;
+  gap: 50px;
 }
 .products > div {
   flex: 1;
@@ -48,7 +48,9 @@
 @media screen and (max-width: 768px) {
   .products {
     margin-top: 5svh;
+    height: calc(100svh - 50px);
     flex-direction: column;
+    gap: 35px;
   }
   .products > div {
     padding: 10px;

@@ -1,0 +1,65 @@
+.guide {
+  margin: auto;
+  margin-top: 150px;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.map {
+  width: 100%;
+  height: 600px;
+  max-width: calc(100% - 50px);
+  position: relative;
+  display: flex;
+  background-color: aqua;
+}
+.naver {
+  width: 100%;
+  border: 1px solid dimgray;
+}
+.cover {
+  z-index: 10;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+.inform {
+  margin-top: 50px;
+  display: flex;
+  width: 100%;
+  max-width: calc(100% - 50px);
+  height: 100%;
+  border: 1px solid dimgray;
+}
+.inform > div {
+  flex: 1;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.inform > hr {
+  border: none;
+  border-top: 1px solid dimgray;
+  border-left: 1px solid dimgray;
+}
+
+@media screen and (max-width: 768px) {
+  .guide {
+    margin-top: 100px;
+    padding: 0px 10px;
+  }
+  .map {
+    height: 350px;
+    max-width: calc(100% - 15px);
+  }
+
+  .inform {
+    margin-top: 25px;
+    max-width: calc(100% - 15px);
+    flex-direction: column;
+  }
+}

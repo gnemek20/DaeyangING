@@ -4,7 +4,6 @@ import styles from "@/styles/Company.module.css";
 const Company = () => {
   return (
     <>
-      <Header />
       <div className={`${styles.introduce}`}>
         <div>
           <div className={`${styles.coverImage}`}>
@@ -49,7 +48,6 @@ const Company = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

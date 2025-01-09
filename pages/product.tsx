@@ -26,7 +26,6 @@ const List = ({ title }: { title: string }) => {
 const Product = () => {
   return (
     <>
-      <Header />
       <div className={`${styles.products}`}>
         <div>
           <List title="지퍼" />
@@ -35,7 +34,6 @@ const Product = () => {
           <List title="풀러" />
         </div>
       </div>
-      <Footer />
     </>
   );
 }

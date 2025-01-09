@@ -1,4 +1,4 @@
-import { Footer, Header } from "@/components";
+import { Footer, Header, WelcomeAnimation } from "@/components";
 import styles from "@/styles/Landing.module.css";
 import { useRouter } from "next/router";
 
@@ -7,10 +7,8 @@ const Landing = () => {
 
   return (
     <>
-      <Header />
-      <div>
-        {/* 랜딩 애니메이션 */}
-      </div>
+      {/* <Header /> */}
+      <WelcomeAnimation />
       <div className={`${styles.summary}`}>
         <div className={`${styles.inspiringText}`}>
           <hr />
@@ -31,7 +29,6 @@ const Landing = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

@@ -9,7 +9,7 @@ const Footer = () => {
       <div className={`${styles.footer}`}>
         <div>
           <p>대양ING</p>
-          <p>서울특별시 종로구 김상옥록 59, 한아빌딩 3층</p>
+          <p>서울특별시 종로구 김상옥로 59, 한아빌딩 3층</p>
         </div>
         <div>
           <div>

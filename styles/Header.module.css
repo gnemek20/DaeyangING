@@ -23,8 +23,10 @@
   gap: 25px;
 }
 .category > div {
+  opacity: 0.35;
   display: flex;
   padding: 10px 25px;
+  transition: all 150ms;
 }
 .category p {
   cursor: pointer;
@@ -38,7 +40,17 @@
   height: auto;
 }
 
+.selected {
+  opacity: 1 !important;
+}
+.selected p {
+  text-decoration: underline;
+}
+
 @media (hover: hover) {
+  .category > div:hover {
+    opacity: 1;
+  }
   .category > div:hover p {
     text-decoration: underline;
   }
