@@ -1,4 +1,3 @@
-import { Footer, Header } from "@/components";
 import styles from "@/styles/Company.module.css";
 
 const Company = () => {

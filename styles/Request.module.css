@@ -33,14 +33,18 @@
 }
 .methods {
   display: flex;
-  gap: 10px;
+  gap: 20px;
+  padding: 0px 10px 20px;
 }
-.methods > * {
+.methods button {
+  opacity: 0.35;
   cursor: pointer;
   flex: 1;
   padding: 10px;
   text-align: center;
-  background-color: aqua;
+  border: 2px dashed #949494;
+  background-color: transparent;
+  transition: all 100ms;
 }
 
 .survey table {
@@ -113,6 +117,12 @@
   text-align: center;
 }
 
+@media (hover:hover) {
+  .methods > button:hover {
+    opacity: 1;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .counsel {
     margin-top: 10svh;
@@ -120,5 +130,9 @@
   }
   .counsel > div {
     width: 100%;
+  }
+
+  .methods > button {
+    opacity: 1;
   }
 }

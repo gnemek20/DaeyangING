@@ -75,10 +75,14 @@ const Header = () => {
           
           if (targetClass.includes('Header')) return;
           else if (targetClass.includes('label')) return;
+          else if (targetClass.includes('cover')) return;
           else if (targetTag.includes('TD')) return;
           else if (targetTag.includes('INPUT')) return;
           else if (targetTag.includes('TEXTAREA')) return;
           else if (targetTag.includes('LABEL')) return;
+          else if (targetTag.includes('IMG')) return;
+          else if (targetTag.includes('AREA')) return;
+          else if (targetTag.includes('BUTTON')) return;
 
           if (!timerRef.current) {
             timerRef.current = setTimeout(() => {

@@ -1,4 +1,4 @@
-import { Footer, Header, WelcomeAnimation } from "@/components";
+import { WelcomeAnimation } from "@/components";
 import styles from "@/styles/Landing.module.css";
 import { useRouter } from "next/router";
 

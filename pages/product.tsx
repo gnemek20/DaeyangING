@@ -1,4 +1,3 @@
-import { Footer, Header } from "@/components";
 import styles from "@/styles/Product.module.css";
 
 const List = ({ title }: { title: string }) => {

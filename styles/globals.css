@@ -8,6 +8,9 @@ h1 {
 p {
   font-family: 'font';
 }
+button {
+  font-family: 'font';
+}
 
 @font-face {
   font-family: 'font';
