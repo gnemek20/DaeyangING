@@ -1,15 +1,48 @@
-.survey {
+.counsel {
   margin: auto;
   margin-top: 150px;
   max-width: 1200px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
 }
-.survey > div {
+.counsel > div {
   width: calc(100% - 50px);
   border-top: 2px solid #636363;
   border-bottom: 2px solid #636363;
 }
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.contact > div:nth-child(1) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 10px 0px;
+  gap: 5px;
+}
+.contact h1 {
+  font-size: 28px;
+}
+.contact p {
+  font-size: 14px;
+}
+.methods {
+  display: flex;
+  gap: 10px;
+}
+.methods > * {
+  cursor: pointer;
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+  background-color: aqua;
+}
+
 .survey table {
   width: 100%;
   border-collapse: collapse;
@@ -81,11 +114,11 @@
 }
 
 @media screen and (max-width: 768px) {
-  .survey {
+  .counsel {
     margin-top: 10svh;
     padding: 0px 10px;
   }
-  .survey > div {
+  .counsel > div {
     width: 100%;
   }
 }

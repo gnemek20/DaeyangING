@@ -3,8 +3,18 @@ import styles from "@/styles/Request.module.css";
 const Request = () => {
   return (
     <>
-      <div className={`${styles.survey}`}>
-        <div>
+      <div className={`${styles.counsel}`}>
+        <div className={`${styles.contact}`}>
+          <div>
+            <h1>잠깐!</h1>
+            <p>이런 연락도 가능해요.</p>
+          </div>
+          <div className={`${styles.methods}`}>
+            <p>카카오톡</p>
+            <p>전화</p>
+          </div>
+        </div>
+        <div className={`${styles.survey}`}>
           <table>
             <tbody>
               <tr className={`${styles.item}`}>

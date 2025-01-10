@@ -135,7 +135,7 @@ const Header = () => {
           <Image className={`${styles.onlyMobile}`} src={zipperIcon.src} alt="" />
         </div>
         <div className={`${path === '/request' && styles.selected}`} onClick={() => routerPush('/request')}>
-          <p className={`${styles.onlyPc}`}>발주 문의</p>
+          <p className={`${styles.onlyPc}`}>상담 문의</p>
           <Image className={`${styles.onlyMobile}`} src={adviceIcon.src} alt="" />
         </div>
         <div className={`${path === '/guide' && styles.selected}`} onClick={() => routerPush('/guide')}>
