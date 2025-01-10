@@ -6,6 +6,7 @@ export default function Document() {
     <Html lang="ko">
       <Head>
         <meta name="description" content="패션의 완성 대양ING" />
+        <meta property="og:image" content="https://llpb2hr4wxbuf0dj.public.blob.vercel-storage.com/DaeYang-ceGeJm40N8tOMcF6PzPhUwwzHrrpvp.jpg" />
       </Head>
       <body>
         <Main />

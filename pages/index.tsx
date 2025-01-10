@@ -1,13 +1,32 @@
 import { WelcomeAnimation } from "@/components";
 import styles from "@/styles/Landing.module.css";
+import Image from "next/image";
 import { useRouter } from "next/router";
+
+const sampleImages = [
+  {
+    src: require('@/public/images/landingSample1.jpg'),
+    alt: 'smapleImage1'
+  },
+  {
+    src: require('@/public/images/landingSample2.jpg'),
+    alt: 'smapleImage2'
+  },
+  {
+    src: require('@/public/images/landingSample3.jpg'),
+    alt: 'smapleImage3'
+  },
+  {
+    src: require('@/public/images/landingSample4.jpg'),
+    alt: 'smapleImage4'
+  }
+];
 
 const Landing = () => {
   const router = useRouter();
 
   return (
     <>
-      {/* <Header /> */}
       <WelcomeAnimation />
       <div className={`${styles.summary}`}>
         <div className={`${styles.inspiringText}`}>
@@ -19,8 +38,14 @@ const Landing = () => {
           <hr />
         </div>
         <div className={`${styles.inspiringSights}`}>
-          <div className={`${styles.comeDownImages}`}>
-            {/* 이미지들 추가 */}
+          <div className={`${styles.sampleImages}`}>
+            {
+              sampleImages.map((sampleImage) => (
+                <div>
+                  <Image src={sampleImage.src} alt={sampleImage.alt} />
+                </div>
+              ))
+            }
           </div>
           <hr />
           <div className={`${styles.actionButtons}`}>
