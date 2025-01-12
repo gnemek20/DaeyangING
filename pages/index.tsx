@@ -1,7 +1,10 @@
 import { WelcomeAnimation } from "@/components";
+import { useObserveElementHandler } from "@/functions/observeElement";
 import styles from "@/styles/Landing.module.css";
+import animations from "@/styles/globalAnimations.module.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useRef } from "react";
 
 const sampleImages = [
   {
@@ -25,11 +28,13 @@ const sampleImages = [
 const Landing = () => {
   const router = useRouter();
 
+  const inspiringTextRef = useRef<HTMLDivElement>(null);
+
   return (
     <>
       <WelcomeAnimation />
       <div className={`${styles.summary}`}>
-        <div className={`${styles.inspiringText}`}>
+        <div ref={inspiringTextRef} className={`${styles.inspiringText} ${useObserveElementHandler(inspiringTextRef) ? animations.fadeUp : ''}`}>
           <hr />
           <div>
             <h1>패션의 완성을 위해 달리는 당신에게</h1>
@@ -40,8 +45,8 @@ const Landing = () => {
         <div className={`${styles.inspiringSights}`}>
           <div className={`${styles.sampleImages}`}>
             {
-              sampleImages.map((sampleImage) => (
-                <div>
+              sampleImages.map((sampleImage, index) => (
+                <div key={index}>
                   <Image src={sampleImage.src} alt={sampleImage.alt} />
                 </div>
               ))

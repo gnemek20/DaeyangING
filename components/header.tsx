@@ -110,6 +110,9 @@ const Header = () => {
   useEffect(() => {
     const path = pathName as pathNames;
     setPath(path);
+
+    const target = headerRef.current;
+    target?.setAttribute('class', `${styles.header}`);
   }, [pathName]);
   
   useEffect(() => {

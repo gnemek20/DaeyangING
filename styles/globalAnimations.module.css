@@ -1,0 +1,16 @@
+.fadeUp {
+  animation: FadeUp 1500ms both;
+  animation-delay: 100ms;
+}
+@keyframes FadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  50% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
