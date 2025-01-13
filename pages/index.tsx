@@ -4,7 +4,7 @@ import styles from "@/styles/Landing.module.css";
 import animations from "@/styles/globalAnimations.module.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const sampleImages = [
   {
@@ -29,6 +29,25 @@ const Landing = () => {
   const router = useRouter();
 
   const inspiringTextRef = useRef<HTMLDivElement>(null);
+  const inspiringSightsHr = useRef<HTMLHRElement>(null);
+
+  const [animationCounter, setAnimationCounter] = useState<number>(0);
+
+  const observeElementHandler = useObserveElementHandler(inspiringSightsHr);
+
+  useEffect(() => {
+    if (!observeElementHandler) return;
+
+    let delay = 0;
+
+    setAnimationCounter(1);
+
+    delay += 1500;
+    setTimeout(() => setAnimationCounter(2), delay);
+
+    delay += 750;
+    setTimeout(() => setAnimationCounter(3), delay);
+  }, [observeElementHandler]);
 
   return (
     <>
@@ -46,14 +65,14 @@ const Landing = () => {
           <div className={`${styles.sampleImages}`}>
             {
               sampleImages.map((sampleImage, index) => (
-                <div key={index}>
+                <div className={`${animationCounter >= 2 ? animations.slideUp : ''}`} key={index}>
                   <Image src={sampleImage.src} alt={sampleImage.alt} />
                 </div>
               ))
             }
           </div>
-          <hr />
-          <div className={`${styles.actionButtons}`}>
+          <hr ref={inspiringSightsHr} className={`${animationCounter >= 1 ? animations.expand : ''}`} />
+          <div className={`${styles.actionButtons} ${animationCounter >= 3 ? animations.fadeIn : ''}`}>
             <button onClick={() => router.push('/product')}>More View</button>
             <button onClick={() => router.push('/request')}>Contact</button>
           </div>

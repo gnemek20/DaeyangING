@@ -1,3 +1,16 @@
+.fadeIn {
+  animation: FadeIn 1500ms both;
+  animation-delay: 100ms;
+}
+@keyframes FadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .fadeUp {
   animation: FadeUp 1500ms both;
   animation-delay: 100ms;
@@ -7,10 +20,35 @@
     opacity: 0;
     transform: translateY(25px);
   }
-  50% {
-    opacity: 0.75;
+  100% {
+    opacity: 1;
+  }
+}
+
+.slideUp {
+  animation: SlideUp 1500ms both;
+  animation-delay: 100ms;
+}
+@keyframes SlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(125%);
   }
   100% {
-    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.expand {
+  animation: Expand 1500ms both;
+  animation-delay: 100ms;
+}
+@keyframes Expand {
+  0% {
+    opacity: 0;
+    width: 0px;
+  }
+  100% {
+    opacity: 1;
   }
 }
