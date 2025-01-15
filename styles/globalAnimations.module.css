@@ -25,6 +25,48 @@
   }
 }
 
+.fadeDown {
+  animation: FadeDown 1500ms both;
+  animation-delay: 100ms;
+}
+@keyframes FadeDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fadeLeft {
+  animation: FadeLeft 1500ms both;
+  animation-delay: 100ms;
+}
+@keyframes FadeLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(25px);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fadeRight {
+  animation: FadeRight 1500ms both;;
+  animation-delay: 100ms;
+}
+@keyframes FadeRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-25px);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .slideUp {
   animation: SlideUp 1500ms both;
   animation-delay: 100ms;
@@ -50,5 +92,30 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+.list > div:nth-child(1) {
+  animation: FadeUp 1500ms both;
+  animation-delay: 100ms;
+}
+.list > div:nth-child(2) {
+  animation: FadeDown 1500ms both;
+  animation-delay: 350ms;
+}
+.list > div:nth-child(3) {
+  animation: FadeUp 1500ms both;
+  animation-delay: 600ms;
+}
+
+@media screen and (max-width: 768px) {
+  .list > div:nth-child(1) {
+    animation-name: FadeLeft;
+  }
+  .list > div:nth-child(2) {
+    animation-name: FadeRight;
+  }
+  .list > div:nth-child(3) {
+    animation-name: FadeLeft;
   }
 }

@@ -1,5 +1,8 @@
+import { useObserveElementHandler } from "@/functions/observeElement";
 import styles from "@/styles/Company.module.css";
+import animations from "@/styles/globalAnimations.module.css";
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 const coverImage = {
   src: require('@/public/images/companyCover.jpg'),
@@ -7,19 +10,53 @@ const coverImage = {
 }
 
 const Company = () => {
+  const introduceRef = useRef<HTMLDivElement>(null);
+  const advantagesRef = useRef<HTMLDivElement>(null);
+  
+  const [introduceAnimationCounter, setIntroduceAnimationCounter] = useState<number>(0);
+  const [advantagesAnimationCounter, setAdvantagesAnimationCounter] = useState<number>(0);
+  
+  const observeIntroduceElement = useObserveElementHandler(introduceRef);
+  const observeAdvantagesElement = useObserveElementHandler(advantagesRef);
+
+  useEffect(() => {
+    if (!observeIntroduceElement) return;
+
+    let delay = 0;
+
+    setIntroduceAnimationCounter(1);
+
+    delay += 500;
+    setTimeout(() => setIntroduceAnimationCounter(2), delay);
+
+    delay += 250;
+    setTimeout(() => setIntroduceAnimationCounter(3), delay);
+  }, [observeIntroduceElement]);
+
+  useEffect(() => {
+    if (!observeAdvantagesElement) return;
+
+    let delay = 0;
+
+    setAdvantagesAnimationCounter(1);
+
+    delay += 750;
+    setTimeout(() => setAdvantagesAnimationCounter(2), delay);
+  }, [observeAdvantagesElement]);
+
   return (
     <>
-      <div className={`${styles.introduce}`}>
+      <div ref={introduceRef} className={`${styles.introduce}`}>
         <div>
-          <div className={`${styles.coverImage}`}>
+          <div className={`animation ${styles.coverImage} ${introduceAnimationCounter >= 1 ? animations.fadeLeft : ''}`}>
             <Image src={coverImage.src} alt={coverImage.alt} />
           </div>
         </div>
         <hr />
         <div>
           <div className={`${styles.introduceText}`}>
-            <h1>대양 아이엔지란?</h1>
-            <div>
+            <h1 className={`animation ${introduceAnimationCounter >= 2 ? animations.fadeUp : ''}`}>대양 아이엔지란?</h1>
+            <div className={`animation ${introduceAnimationCounter >= 3 ? animations.fadeUp : ''}`}>
               <p>국내 최고의 패션 리더 그룹사들의 파트너로서</p>
               <p>20여 년간 끊임없는 신뢰와 열정으로 함께 걸어가고 있습니다.</p>
               <br />
@@ -38,27 +75,27 @@ const Company = () => {
         </div>
       </div>
       <div className={`${styles.merit}`}>
-        <div className={`${styles.inspiringText}`}>
+        <div className={`animation ${styles.inspiringText} ${advantagesAnimationCounter >= 1 ? animations.fadeUp : ''}`}>
           <hr />
           <div>
             <h1>장점을 소개하는 문구</h1>
           </div>
           <hr />
         </div>
-        <div className={`${styles.advantages}`}>
-          <div>
+        <div ref={advantagesRef} className={`${styles.advantages} ${advantagesAnimationCounter >= 2 ? animations.list : ''}`}>
+          <div className={`animation`}>
             <div className={`${styles.advantageTitle}`}>
               <h1>장점</h1>
               <hr />
             </div>
           </div>
-          <div>
+          <div className={`animation`}>
             <div className={`${styles.advantageTitle}`}>
               <h1>장점</h1>
               <hr />
             </div>
           </div>
-          <div>
+          <div className={`animation`}>
             <div className={`${styles.advantageTitle}`}>
               <h1>장점</h1>
               <hr />

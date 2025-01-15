@@ -9,6 +9,10 @@ p {
   font-family: 'font';
 }
 
+.animation {
+  opacity: 0;
+}
+
 @font-face {
   font-family: 'font';
   src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-cBd.eot);

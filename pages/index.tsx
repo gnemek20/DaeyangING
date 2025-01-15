@@ -65,14 +65,14 @@ const Landing = () => {
           <div className={`${styles.sampleImages}`}>
             {
               sampleImages.map((sampleImage, index) => (
-                <div className={`${animationCounter >= 2 ? animations.slideUp : ''}`} key={index}>
+                <div className={`animation ${animationCounter >= 2 ? animations.slideUp : ''}`} key={index}>
                   <Image src={sampleImage.src} alt={sampleImage.alt} />
                 </div>
               ))
             }
           </div>
-          <hr ref={inspiringSightsHr} className={`${animationCounter >= 1 ? animations.expand : ''}`} />
-          <div className={`${styles.actionButtons} ${animationCounter >= 3 ? animations.fadeIn : ''}`}>
+          <hr ref={inspiringSightsHr} className={`animation ${animationCounter >= 1 ? animations.expand : ''}`} />
+          <div className={`animation ${styles.actionButtons} ${animationCounter >= 3 ? animations.fadeIn : ''}`}>
             <button onClick={() => router.push('/product')}>More View</button>
             <button onClick={() => router.push('/request')}>Contact</button>
           </div>
