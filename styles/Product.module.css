@@ -189,6 +189,9 @@
   .detail {
     padding: 20px 10px;
   }
+  .detail p {
+    font-size: 0.8rem;
+  }
 
   .puller {
     margin-top: 50px;
@@ -212,5 +215,11 @@
     right: 0;
     width: 77.5%;
     /* aspect-ratio: 1/1.35; */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .detail p {
+    text-align: center;
   }
 }

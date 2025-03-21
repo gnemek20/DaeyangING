@@ -9,6 +9,19 @@ const coverImage = {
   alt: 'coverImage'
 }
 
+const advantage1Icon = {
+  src: require('@/public/icons/advantage1.svg'),
+  alt: 'advantage1'
+}
+const advantage2Icon = {
+  src: require('@/public/icons/advantage2.svg'),
+  alt: 'advantage2'
+}
+const advantage3Icon = {
+  src: require('@/public/icons/advantage3.svg'),
+  alt: 'advantage3'
+}
+
 const Company = () => {
   const introduceRef = useRef<HTMLDivElement>(null);
   const advantagesRef = useRef<HTMLDivElement>(null);
@@ -78,26 +91,30 @@ const Company = () => {
         <div className={`animation ${styles.inspiringText} ${advantagesAnimationCounter >= 1 ? animations.fadeUp : ''}`}>
           <hr />
           <div>
-            <h1>장점을 소개하는 문구</h1>
+            <h1>최고의 작품을 위해</h1>
+            <h1>대양ING가 약속드립니다.</h1>
           </div>
           <hr />
         </div>
         <div ref={advantagesRef} className={`${styles.advantages} ${advantagesAnimationCounter >= 2 ? animations.list : ''}`}>
           <div className={`animation`}>
+            <Image src={advantage1Icon.src} alt={advantage1Icon.alt} />
             <div className={`${styles.advantageTitle}`}>
-              <h1>장점</h1>
+              <h1>빠른 응대</h1>
               <hr />
             </div>
           </div>
           <div className={`animation`}>
+            <Image src={advantage2Icon.src} alt={advantage2Icon.alt} />
             <div className={`${styles.advantageTitle}`}>
-              <h1>장점</h1>
+              <h1>완벽한 품질</h1>
               <hr />
             </div>
           </div>
           <div className={`animation`}>
+            <Image src={advantage3Icon.src} alt={advantage3Icon.alt} />
             <div className={`${styles.advantageTitle}`}>
-              <h1>장점</h1>
+              <h1>신속한 납기</h1>
               <hr />
             </div>
           </div>

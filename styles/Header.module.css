@@ -23,13 +23,13 @@
   gap: 25px;
 }
 .category > div {
+  cursor: pointer;
   opacity: 0.35;
   display: flex;
   padding: 10px 25px;
   transition: all 150ms;
 }
 .category p {
-  cursor: pointer;
   color: white;
   font-size: 18px;
   text-underline-offset: 6px;

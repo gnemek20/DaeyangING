@@ -37,12 +37,12 @@
   padding: 0px 10px 20px;
 }
 .methods button {
-  opacity: 0.35;
+  opacity: 0.2;
   cursor: pointer;
   flex: 1;
   padding: 10px;
   text-align: center;
-  border: 2px dashed #949494;
+  border: 1px dashed #949494;
   background-color: transparent;
   transition: all 100ms;
 }
@@ -94,9 +94,16 @@
   outline: none;
 }
 
+.requestTitle {
+  width: max(250px, 50%) !important;
+}
+
 .checkbox {
   display: flex;
   gap: 5px;
+}
+.checkbox > * {
+  cursor: pointer;
 }
 .label {
   font-size: 14px;
@@ -112,12 +119,30 @@
 }
 .file > label {
   opacity: 0.35;
+  font-size: 14px;
   cursor: pointer;
   width: 100px;
   padding: 5px 10px;
-  border: 2px dashed #949494;
+  border: 1px dashed #949494;
   text-align: center;
   transition: all 100ms;
+}
+
+.submitArea {
+  border: none !important;
+  display: flex;
+}
+.submitButton {
+  margin-left: auto;
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid #949494;
+  background-color: transparent;
+  transition: all 150ms;
+}
+.submitButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
 }
 
 @media (hover:hover) {
@@ -137,6 +162,10 @@
   }
   .counsel > div {
     width: 100%;
+  }
+
+  .requestTitle {
+    width: 100% !important;
   }
 
   .methods > button {
