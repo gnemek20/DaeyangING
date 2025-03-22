@@ -76,6 +76,7 @@ const Header = () => {
           if (targetClass.includes('Header')) return;
           else if (targetClass.includes('label')) return;
           else if (targetClass.includes('cover')) return;
+          else if (targetClass.includes('attachmentName')) return;
           else if (targetTag.includes('TD')) return;
           else if (targetTag.includes('INPUT')) return;
           else if (targetTag.includes('TEXTAREA')) return;

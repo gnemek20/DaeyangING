@@ -26,7 +26,8 @@ const Request = () => {
   const [content, setContent] = useState<orderDetailsAttribute['content']>('');
 
   const [types, setTypes] = useState<orderDetailsAttribute['types']>([]);
-  const [files, setFiles] = useState<orderDetailsAttribute['files']>([]);
+  // const [files, setFiles] = useState<orderDetailsAttribute['files']>([]);
+  const [files, setFiles] = useState<Array<fileType>>([]);
 
   const contentPlaceholder = [
     ``
@@ -49,6 +50,25 @@ const Request = () => {
     else tempList = [...tempList, target];
 
     setTypes(tempList);
+  }
+
+  const changeFiles = (event: ChangeEvent<HTMLInputElement>) => {
+    const eventTarget = event.target;
+    const eventFiles = eventTarget.files;
+
+    if (eventFiles !== null) {
+      const fileList = Array.prototype.slice.call(eventFiles);
+      setFiles([...files, ...fileList]);
+      eventTarget.value = '';
+    }
+  }
+
+  const deleteFile = (fileIndex: number) => {
+    setFiles([...files.filter((file, index) => index !== fileIndex)]);
+  }
+
+  const submit = () => {
+    // TODO: 서버에 문의 보내는 기능 추가
   }
 
   useEffect(() => {
@@ -122,10 +142,23 @@ const Request = () => {
                 <th>첨부파일</th>
                 <td>
                   <div className={`${styles.file}`}>
-                    <input id="file" type="file" />
-                    <label htmlFor="file">업로드</label>
+                    <input id="file" type="file" onChange={(event) => changeFiles(event)} multiple />
+                    <label htmlFor="file">{ files.length === 0 ? "업로드" : `${files.length}개의 첨부파일` }</label>
                   </div>
                 </td>
+                {
+                  files.length !== 0 && (
+                    <td className={`${styles.attachmentList}`}>
+                      {
+                        files.map((file, index) => (
+                          <div className={`${styles.attachment}`} key={index}>
+                            <p className={`${styles.attachmentName}`} onClick={() => deleteFile(index)}>{ file.name }</p>
+                          </div>
+                        ))
+                      }
+                    </td>
+                  )
+                }
               </tr>
             </tbody>
           </table>
