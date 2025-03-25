@@ -1,5 +1,6 @@
 import styles from "@/styles/Request.module.css";
-import { ChangeEvent, ElementType, use, useEffect, useState } from "react";
+import { File } from "buffer";
+import { ChangeEvent, useEffect, useState } from "react";
 
 const Request = () => {
   type typesType = '지퍼' | '풀러';
@@ -27,7 +28,7 @@ const Request = () => {
 
   const [types, setTypes] = useState<orderDetailsAttribute['types']>([]);
   // const [files, setFiles] = useState<orderDetailsAttribute['files']>([]);
-  const [files, setFiles] = useState<Array<fileType>>([]);
+  const [files, setFiles] = useState<Array<File>>([]);
 
   const contentPlaceholder = [
     ``
@@ -67,23 +68,76 @@ const Request = () => {
     setFiles([...files.filter((file, index) => index !== fileIndex)]);
   }
 
-  const submit = () => {
+  const submit = async () => {
     // TODO: 서버에 문의 보내는 기능 추가
+    let base64Files: Array<fileType> = [];
+
+    const fileToBase64Promise = files.map((file) => {
+      return new Promise((resolve, reject) => {
+        let reader = new FileReader();
+
+        reader.readAsDataURL(file as Blob);
+        reader.onload = () => {
+          const base64 = reader.result;
+
+          if (base64) {
+            base64Files.push({
+              name: file.name,
+              path: base64.toString()
+            });
+
+            resolve(true);
+          }
+        }
+      });
+    });
+
+    await Promise.all(fileToBase64Promise);
+
+    try {
+      const orderDetails: orderDetailsAttribute = {
+        name: name,
+        contact: contact,
+        types: types,
+        title: title,
+        content: content,
+        files: base64Files
+      };
+
+      const server = 'https://daeyang-ing-back.vercel.app';
+
+      const postOrderRes = await fetch(`${server}/postOrder`, {
+        method: 'post',
+        body: JSON.stringify(orderDetails),
+        mode: 'cors',
+        headers: { 'Content-Type': 'application/json' }
+      });
+
+      if (postOrderRes.ok) {
+        try {
+          await postOrderRes.json().then(data => {
+            if (data.status === 200) console.log('Success');
+            else console.log(`${data.status} Failed`);
+          });
+        } catch (Exception) {
+          console.log('Res Error');
+        }
+      }
+    } catch (Exception) {
+      console.log('Fetch Error')
+    }
   }
 
   useEffect(() => {
-    const orderDetails: orderDetailsAttribute = {
+    const orderDetails: { name: orderDetailsAttribute['name'], contact: orderDetailsAttribute['contact'], title: orderDetailsAttribute['title'] } = {
       name: name.replace(/ /g, ''),
       contact: contact.replace(/ /g, ''),
-      types: types,
-      title: title,
-      content: content,
-      files: files
+      title: title
     }
 
     if (orderDetails.name.length !== 0 && orderDetails.contact.length !== 0 && orderDetails.title.length !== 0) setActiveSubmitButton(true);
     else setActiveSubmitButton(false);
-  }, [name, contact, title, content, types, files]);
+  }, [name, contact, title, content, types]);
 
   return (
     <>
@@ -164,7 +218,7 @@ const Request = () => {
           </table>
         </div>
         <div className={`${styles.submitArea}`}>
-          <input className={`${styles.submitButton}`} type="button" value={"문의 보내기"} disabled={!activeSubmitButton} />
+          <input className={`${styles.submitButton}`} type="button" value={"문의 보내기"} disabled={!activeSubmitButton} onClick={() => submit()} />
         </div>
       </div>
     </>
