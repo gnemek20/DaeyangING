@@ -20,6 +20,8 @@ const Request = () => {
   }
 
   const [activeSubmitButton, setActiveSubmitButton] = useState<boolean>(false);
+  const [goOverSubmitText, setGoOverSubmitText] = useState<string>('정말 제출하시겠습니까?');
+  const [showGoOverSubmitText, setShowGoOverSubmitText] = useState<boolean>(false);
 
   const [name, setName] = useState<orderDetailsAttribute['name']>('');
   const [contact, setContact] = useState<orderDetailsAttribute['contact']>('');
@@ -27,7 +29,6 @@ const Request = () => {
   const [content, setContent] = useState<orderDetailsAttribute['content']>('');
 
   const [types, setTypes] = useState<orderDetailsAttribute['types']>([]);
-  // const [files, setFiles] = useState<orderDetailsAttribute['files']>([]);
   const [files, setFiles] = useState<Array<File>>([]);
 
   const contentPlaceholder = [
@@ -68,8 +69,16 @@ const Request = () => {
     setFiles([...files.filter((file, index) => index !== fileIndex)]);
   }
 
+  const activeGoOverSubmit = () => {
+    if (showGoOverSubmitText) {
+      submit();
+    }
+    else {
+      setShowGoOverSubmitText(true);
+    }
+  }
+
   const submit = async () => {
-    // TODO: 서버에 문의 보내는 기능 추가
     let base64Files: Array<fileType> = [];
 
     const fileToBase64Promise = files.map((file) => {
@@ -94,6 +103,14 @@ const Request = () => {
 
     await Promise.all(fileToBase64Promise);
 
+    const resetSubmit = () => {
+      setTimeout(() => {
+        setShowGoOverSubmitText(false);
+        setActiveSubmitButton(true);
+        setTimeout(() => setGoOverSubmitText('정말 제출하시겠습니까?'), 150);
+      }, 2500);
+    }
+
     try {
       const orderDetails: orderDetailsAttribute = {
         name: name,
@@ -106,6 +123,9 @@ const Request = () => {
 
       const server = 'https://daeyang-ing-back.vercel.app';
 
+      setGoOverSubmitText('제출 중입니다.');
+      setActiveSubmitButton(false);
+
       const postOrderRes = await fetch(`${server}/postOrder`, {
         method: 'post',
         body: JSON.stringify(orderDetails),
@@ -116,15 +136,23 @@ const Request = () => {
       if (postOrderRes.ok) {
         try {
           await postOrderRes.json().then(data => {
-            if (data.status === 200) console.log('Success');
-            else console.log(`${data.status} Failed`);
+            if (data.status === 200) {
+              setGoOverSubmitText('문의가 등록되었습니다.');
+              resetSubmit();
+            }
+            else {
+              setGoOverSubmitText('문제가 발생했습니다.');
+              resetSubmit();
+            }
           });
         } catch (Exception) {
-          console.log('Res Error');
+          setGoOverSubmitText('문제가 발생했습니다.');
+          resetSubmit();
         }
       }
     } catch (Exception) {
-      console.log('Fetch Error')
+      setGoOverSubmitText('문제가 발생했습니다.');
+      resetSubmit();
     }
   }
 
@@ -218,7 +246,8 @@ const Request = () => {
           </table>
         </div>
         <div className={`${styles.submitArea}`}>
-          <input className={`${styles.submitButton}`} type="button" value={"문의 보내기"} disabled={!activeSubmitButton} onClick={() => submit()} />
+          <p className={`${styles.goOverSubmitText} ${showGoOverSubmitText ? styles.showGoOverSubmitText : styles.hideGoOverSubmitText}`}>{goOverSubmitText}</p>
+          <input className={`${styles.submitButton}`} type="button" value={'제출'} disabled={!activeSubmitButton} onClick={() => activeGoOverSubmit()} />
         </div>
       </div>
     </>

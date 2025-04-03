@@ -148,6 +148,20 @@
 .submitArea {
   border: none !important;
   display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.goOverSubmitText {
+  margin-left: auto;
+  font-size: 14px;
+  color: #fa5760;
+  transition: all 100ms;
+}
+.hideGoOverSubmitText {
+  opacity: 0;
+}
+.showGoOverSubmitText {
+  opacity: 1;
 }
 .submitButton {
   margin-left: auto;
@@ -155,6 +169,7 @@
   padding: 5px 10px;
   border: 1px solid #949494;
   background-color: transparent;
+  outline: none;
   transition: all 150ms;
 }
 .submitButton:disabled {
