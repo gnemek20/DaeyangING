@@ -42,7 +42,7 @@ const Landing = () => {
 
     setAnimationCounter(1);
 
-    delay += 1500;
+    delay += 1000;
     setTimeout(() => setAnimationCounter(2), delay);
 
     delay += 750;

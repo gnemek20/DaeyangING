@@ -82,7 +82,7 @@
 }
 
 .expand {
-  animation: Expand 1500ms both;
+  animation: Expand 1250ms both;
   animation-delay: 100ms;
 }
 @keyframes Expand {

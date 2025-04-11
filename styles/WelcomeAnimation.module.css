@@ -2,6 +2,7 @@
   width: 100%;
   height: calc(100svh - 40px);
   display: flex;
+  justify-content: center;
 }
 .canvas > div {
   position: absolute;
@@ -13,11 +14,246 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: aqua;
+  gap: 5px;
+}
+.canvas p {
+  font-size: 20px;
+}
+.canvas h1 {
+  font-size: 32px;
+}
+
+.reversal {
+  color: white;
+}
+
+.zipper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.zipperLine {
+  z-index: 1;
+  border: none;
+  border-top: 1px dashed #2e2e2e;
+  width: 100%;
+}
+.sliderIcon {
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  transform: translateY(-20%);
+  width: 45px;
+  height: auto;
+  filter: invert(0.15);
+}
+.zipperText {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  letter-spacing: 7px;
+  font-size: 24px !important;
+  color: white;
+}
+.typingText {
+  height: 22px;
+}
+
+.logoLine {
+  margin-top: 5px;
+  margin-bottom: 20px;
+  border: 1px solid #2e2e2e;
+  width: 200px;
+}
+.logo {
+  width: 75px;
+  height: auto;
+  filter: invert(0.15);
+}
+
+.emphasizeScroll {
+  position: absolute;
+  bottom: 100px;
+  width: 30px;
+  height: auto;
 }
 
 @media screen and (max-width: 768px) {
   .canvas {
     height: calc(100svh - 50px);
+  }
+
+  .zipper {
+    width: 75%;
+  }
+  .sliderIcon {
+    width: 35px;
+  }
+}
+
+.playAnimation {
+  animation-play-state: running !important;
+}
+
+.typingShow {
+  animation: typingShow 750ms both;
+  animation-play-state: paused;
+}
+@keyframes typingShow {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.zipperShow {
+  animation: zipperShow 500ms both;
+  animation-play-state: paused;
+}
+@keyframes zipperShow {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.sliderMove {
+  animation: sliderMove 1250ms both;
+  animation-play-state: paused;
+}
+@keyframes sliderMove {
+  100% {
+    left: 100%;
+    transform: translateX(-100%) translateY(-20%);
+  }
+}
+
+.softSlideIn {
+  animation: softSlideIn 1000ms both;
+  animation-play-state: paused;
+}
+@keyframes softSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(125%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.backgroundInverse {
+  animation: backgroundInverse 200ms both;
+  animation-play-state: paused;
+}
+@keyframes backgroundInverse {
+  100% {
+    background-color: black;
+  }
+}
+
+.wingFadeIn {
+  animation: wingFadeIn 1000ms both;
+  animation-play-state: paused;
+}
+@keyframes wingFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.panelFadeOut {
+  animation: panelFadeOut 1250ms both;
+}
+@keyframes panelFadeOut {
+  0% {
+    opacity: 1;
+    background-color: black;
+  }
+  100% {
+    opacity: 0;
+    background-color: black;
+  }
+}
+
+.logoLineExpand {
+  animation: logoLineExpand 750ms both;
+  animation-play-state: paused;
+}
+@keyframes logoLineExpand {
+  0% {
+    opacity: 0;
+    width: 0;
+  }
+  100% {
+    opacity: 1;
+    width: 200px;
+  }
+}
+
+.logoTextSlideIn {
+  animation: logoTextSlideIn 1000ms both;
+  animation-play-state: paused;
+}
+@keyframes logoTextSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(25%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.logoSlideIn {
+  animation: logoSlideIn 1500ms both;
+  animation-play-state: paused;
+}
+@keyframes logoSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-25%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.emphasizeScrollFadeIn {
+  animation: emphasizeScrollFadeIn 750ms both;
+  animation-play-state: paused;
+}
+@keyframes emphasizeScrollFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.emphasizeScrollSliding {
+  animation: emphasizeScrollSliding 1500ms alternate ease-in-out infinite;
+}
+@keyframes emphasizeScrollSliding {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(50%);
   }
 }
