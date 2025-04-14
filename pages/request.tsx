@@ -176,7 +176,7 @@ const Request = () => {
             <p>이런 연락도 가능해요.</p>
           </div>
           <div className={`${styles.methods}`}>
-            <button>전화 연결</button>
+            <button onClick={() => location.href='tel:010-3744-3084'}>전화 연결</button>
             <button>카카오톡 연결</button>
           </div>
         </div>
