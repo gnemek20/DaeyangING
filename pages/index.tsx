@@ -1,10 +1,12 @@
-import { WelcomeAnimation } from "@/components";
 import { useObserveElementHandler } from "@/functions/observeElement";
 import styles from "@/styles/Landing.module.css";
 import animations from "@/styles/globalAnimations.module.css";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+
+const WelcomeAnimation = dynamic(() => import("@/components/welcomeAnimation"), { ssr: false });
 
 const sampleImages = [
   {
@@ -34,6 +36,9 @@ const Landing = () => {
   const [animationCounter, setAnimationCounter] = useState<number>(0);
 
   const observeElementHandler = useObserveElementHandler(inspiringSightsHr);
+
+  const goProduct = useCallback(() => router.push('/product'), [router]);
+  const goRequest = useCallback(() => router.push('/request'), [router]);
 
   useEffect(() => {
     if (!observeElementHandler) return;
@@ -73,8 +78,8 @@ const Landing = () => {
           </div>
           <hr ref={inspiringSightsHr} className={`animation ${animationCounter >= 1 ? animations.expand : ''}`} />
           <div className={`animation ${styles.actionButtons} ${animationCounter >= 3 ? animations.fadeIn : ''}`}>
-            <button onClick={() => router.push('/product')}>More View</button>
-            <button onClick={() => router.push('/request')}>Contact</button>
+            <button onClick={goProduct}>More View</button>
+            <button onClick={goRequest}>Contact</button>
           </div>
         </div>
       </div>

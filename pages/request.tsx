@@ -1,6 +1,6 @@
 import styles from "@/styles/Request.module.css";
 import { File } from "buffer";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useCallback, useEffect, useState } from "react";
 
 const Request = () => {
   type typesType = '지퍼' | '풀러';
@@ -35,7 +35,7 @@ const Request = () => {
     ``
   ].join('\n');
 
-  const inputText = (target: keyof orderDetailsAttribute, event: ChangeEvent) => {
+  const inputText = useCallback((target: keyof orderDetailsAttribute, event: ChangeEvent) => {
     const elementTarget = event.target as HTMLInputElement;
     const value = elementTarget.value;
     
@@ -43,31 +43,29 @@ const Request = () => {
     else if (target === 'contact') setContact(value);
     else if (target === 'title') setTitle(value);
     else if (target === 'content') setContent(value);
-  }
+  }, [])
 
-  const changeOrderTypes = (target: typesType) => {
-    let tempList: Array<typesType> = types ? types : [];
+  const changeOrderTypes = useCallback((target: typesType) => {
+    setTypes(prev => {
+      const list = prev ?? [];
+      return list.includes(target) ? list.filter(t => t !== target) : [...list, target];
+    });
+  }, [])
 
-    if (types?.includes(target)) tempList = [...tempList.filter(temp => temp !== target)];
-    else tempList = [...tempList, target];
-
-    setTypes(tempList);
-  }
-
-  const changeFiles = (event: ChangeEvent<HTMLInputElement>) => {
+  const changeFiles = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     const eventTarget = event.target;
     const eventFiles = eventTarget.files;
 
     if (eventFiles !== null) {
       const fileList = Array.prototype.slice.call(eventFiles);
-      setFiles([...files, ...fileList]);
+      setFiles(prev => [...prev, ...fileList]);
       eventTarget.value = '';
     }
-  }
+  }, [])
 
-  const deleteFile = (fileIndex: number) => {
-    setFiles([...files.filter((file, index) => index !== fileIndex)]);
-  }
+  const deleteFile = useCallback((fileIndex: number) => {
+    setFiles(prev => prev.filter((_, index) => index !== fileIndex));
+  }, [])
 
   const activeGoOverSubmit = () => {
     if (showGoOverSubmitText) {

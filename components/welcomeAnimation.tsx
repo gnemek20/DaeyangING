@@ -1,8 +1,8 @@
 import styles from "@/styles/WelcomeAnimation.module.css";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 
-const Zipper = ({ animationCounter }: { animationCounter: number }) => {
+const Zipper = memo(function Zipper({ animationCounter }: { animationCounter: number }) {
   const sliderIcon = {
     src: require('@/public/icons/slider.svg'),
     alt: 'sliderIcon'
@@ -15,9 +15,9 @@ const Zipper = ({ animationCounter }: { animationCounter: number }) => {
       <h1 className={`${styles.zipperText} ${styles.reversal}`}>IMPRESSIVE</h1>
     </div>
   );
-}
+})
 
-const TypingText = ({ className, value, delay, playAnimation }: { className?: string, value: string, delay: number, playAnimation: boolean }) => {
+const TypingText = memo(function TypingText({ className, value, delay, playAnimation }: { className?: string, value: string, delay: number, playAnimation: boolean }) {
   const [text, setText] = useState<string>('');
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const TypingText = ({ className, value, delay, playAnimation }: { className?: st
   return (
     <p className={`${styles.typingText} ${styles.typingShow} ${playAnimation && styles.playAnimation} ${className}`}>{ text }</p>
   );
-}
+})
 
 const WelcomeAnimation = () => {
   const [animationCounter, setAnimationCounter] = useState<number>(0);

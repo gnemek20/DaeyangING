@@ -1,5 +1,6 @@
 import styles from "@/styles/Product.module.css";
 import Image from "next/image";
+import { memo } from "react";
 
 const introduceCover = {
   src: require('@/public/images/productCover.jpg'),
@@ -55,13 +56,13 @@ const puller3 = {
   alt: 'puller3'
 }
 
-const Deck = ({ image}: { image: typeof introduceCover }) => {
+const Deck = memo(function Deck({ image}: { image: typeof introduceCover }) {
   return (
     <div className={`${styles.deck}`}>
       <Image src={image.src} alt={image.alt} />
     </div>
   );
-}
+})
 
 const Product = () => {
   return (
